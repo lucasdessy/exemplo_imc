@@ -36,6 +36,7 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: CupertinoTheme.of(context).scaffoldBackgroundColor,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(
           parent: const AlwaysScrollableScrollPhysics(),
@@ -53,13 +54,17 @@ class _HomeState extends State<Home> {
                   Text(
                     'Sua altura',
                     textAlign: TextAlign.start,
+                    style: CupertinoTheme.of(context).textTheme.textStyle,
                   ),
                   CupertinoTextField(
                     controller: alturaTc,
                     keyboardType: TextInputType.number,
                     suffix: Padding(
                       padding: EdgeInsets.only(right: 16),
-                      child: Text('m'),
+                      child: Text(
+                        'm',
+                        style: CupertinoTheme.of(context).textTheme.textStyle,
+                      ),
                     ),
                   ),
                   SizedBox(
@@ -68,29 +73,41 @@ class _HomeState extends State<Home> {
                   Text(
                     'Seu peso',
                     textAlign: TextAlign.start,
+                    style: CupertinoTheme.of(context).textTheme.textStyle,
                   ),
                   CupertinoTextField(
                     controller: pesoTc,
                     keyboardType: TextInputType.number,
                     suffix: Padding(
                       padding: EdgeInsets.only(right: 16),
-                      child: Text('kg'),
+                      child: Text(
+                        'kg',
+                        style: CupertinoTheme.of(context).textTheme.textStyle,
+                      ),
                     ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
                   Container(
-                    color: Colors.grey.shade200,
+                    color: Colors.grey.withOpacity(0.3),
                     height: 200,
                     margin: EdgeInsets.symmetric(horizontal: 16),
                     child: Column(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Text('Seu IMC é:'),
+                        Text(
+                          'Seu IMC é:',
+                          style: CupertinoTheme.of(context).textTheme.textStyle,
+                        ),
                         Text(
                           imc,
-                          style: TextStyle(fontSize: 70),
+                          style: TextStyle(
+                              fontSize: 70,
+                              color: CupertinoTheme.of(context)
+                                  .textTheme
+                                  .textStyle
+                                  .color),
                         )
                       ],
                     ),
