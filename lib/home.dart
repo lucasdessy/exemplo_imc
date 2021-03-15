@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -10,6 +12,13 @@ class _HomeState extends State<Home> {
   final alturaTc = TextEditingController();
   final pesoTc = TextEditingController();
   var imc = '0';
+
+  @override
+  void initState() {
+    alturaTc.addListener(handleCalcularButton);
+    pesoTc.addListener(handleCalcularButton);
+    super.initState();
+  }
 
   void handleCalcularButton() {
     final altura = double.tryParse(alturaTc.text.replaceAll(',', '.'));
@@ -70,11 +79,6 @@ class _HomeState extends State<Home> {
                       child: Text('kg'),
                     ),
                   ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  CupertinoButton.filled(
-                      child: Text('Calcular'), onPressed: handleCalcularButton),
                   SizedBox(
                     height: 20,
                   ),
